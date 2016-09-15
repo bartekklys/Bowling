@@ -1,3 +1,6 @@
+import exception.BowlingException;
+import game.Frame;
+import game.Game;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -31,15 +34,9 @@ public class Tests {
         //given
         int expectedResult = 142;
         //when
-        game.roll(new Frame(5, 5));
-        game.roll(new Frame(5, 5));
-        game.roll(new Frame(5, 5));
-        game.roll(new Frame(5, 5));
-        game.roll(new Frame(5, 5));
-        game.roll(new Frame(5, 5));
-        game.roll(new Frame(5, 5));
-        game.roll(new Frame(5, 5));
-        game.roll(new Frame(5, 5));
+        for(int i = 0 ; i < 9 ; i++) {
+            game.roll(new Frame(5, 5));
+        }
         game.roll(new Frame(4, 4));
         //then
         assertThat(game.score()).isEqualTo(expectedResult);
@@ -57,13 +54,33 @@ public class Tests {
         int expectedResult = 50;
         //when
         game.roll(new Frame(10, 0));
-        game.roll(new Frame(2, 2));
-        game.roll(new Frame(2, 2));
-        game.roll(new Frame(2, 2));
-        game.roll(new Frame(2, 2));
-        game.roll(new Frame(2, 2));
-        game.roll(new Frame(2, 2));
-        game.roll(new Frame(2, 2));
+        for(int i = 0 ; i < 9 ; i++) {
+            game.roll(new Frame(2, 2));
+        }
+        //then
+        assertThat(game.score()).isEqualTo(expectedResult);
+    }
+
+    @Test
+    public void shouldReturn0AfterFailingAllRolls() throws BowlingException {
+        //given
+        int expectedResult = 0;
+        //when
+        for(int i = 0 ; i < 10 ; i++) {
+            game.roll(new Frame(0, 0));
+        }
+        //then
+        assertThat(game.score()).isEqualTo(expectedResult);
+    }
+
+    @Test
+    public void shouldReturnCorrectScoreAfterRollingManyStrikesInRow() throws BowlingException {
+        //given
+        int expectedResult = 224;
+        //when
+        for(int i = 0 ; i < 8 ; i++) {
+            game.roll(new Frame(10, 0));
+        }
         game.roll(new Frame(2, 2));
         game.roll(new Frame(2, 2));
         //then

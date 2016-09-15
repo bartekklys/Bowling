@@ -1,3 +1,7 @@
+package game;
+
+import exception.BowlingException;
+
 public class Frame {
     private int firstRoll = 0;
     private int secondRoll = 0;
@@ -33,7 +37,7 @@ public class Frame {
 
     @Override
     public String toString() {
-        return "Frame{" +
+        return "game.Frame{" +
                 "firstRoll=" + firstRoll +
                 ", secondRoll=" + secondRoll +
                 '}';
