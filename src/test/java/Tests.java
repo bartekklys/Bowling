@@ -18,6 +18,17 @@ public class Tests {
     }
 
     @Test
+    public void constructorShouldSetAmountAndCurrency() throws BowlingException {
+        //given
+        Frame frame = new Frame(4, 3);
+        int expectedFirstRoll = 4;
+        int expectedSecondRoll = 3;
+        //then
+        assertThat(frame.getFirstRoll()).isEqualTo(expectedFirstRoll);
+        assertThat(frame.getSecondRoll()).isEqualTo(expectedSecondRoll);
+    }
+
+    @Test
     public void shouldReturn40AfterRolling10TimesFor2Points() throws BowlingException {
         //given
         int expectedResult = 40;
@@ -45,7 +56,7 @@ public class Tests {
     @Test(expectedExceptions = BowlingException.class)
     public void shouldThrowBowlingExceptionWhenNumberOfPinsIsGreaterThan10() throws BowlingException {
         //given
-        game.roll(new Frame(11,0));
+        Frame frame = new Frame(11,0);
     }
 
     @Test

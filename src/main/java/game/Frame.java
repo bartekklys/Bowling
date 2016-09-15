@@ -3,8 +3,8 @@ package game;
 import exception.BowlingException;
 
 public class Frame {
-    private int firstRoll = 0;
-    private int secondRoll = 0;
+    private int firstRoll;
+    private int secondRoll;
 
     public Frame(int firstRoll, int secondRoll) throws BowlingException {
         if ((firstRoll + secondRoll) > 10) {
