@@ -7,7 +7,7 @@ public class Frame {
     private int secondRoll = 0;
 
     public Frame(int firstRoll, int secondRoll) throws BowlingException {
-        if (firstRoll > 10 || secondRoll > 10) {
+        if ((firstRoll + secondRoll) > 10) {
             throw new BowlingException();
         } else {
             this.firstRoll = firstRoll;
