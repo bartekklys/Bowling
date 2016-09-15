@@ -27,7 +27,7 @@ public class Tests {
     }
 
     @Test
-    public void shouldReturn300AfterRolling10TimesFor10Points() throws BowlingException {
+    public void shouldReturnCorrectScore() throws BowlingException {
         //given
         int expectedResult = 142;
         //when
@@ -49,6 +49,25 @@ public class Tests {
     public void shouldThrowBowlingExceptionWhenNumberOfPinsIsGreaterThan10() throws BowlingException {
         //given
         game.roll(new Frame(11,0));
+    }
+
+    @Test
+    public void shouldReturn300() throws BowlingException {
+        //given
+        int expectedResult = 50;
+        //when
+        game.roll(new Frame(10, 0));
+        game.roll(new Frame(2, 2));
+        game.roll(new Frame(2, 2));
+        game.roll(new Frame(2, 2));
+        game.roll(new Frame(2, 2));
+        game.roll(new Frame(2, 2));
+        game.roll(new Frame(2, 2));
+        game.roll(new Frame(2, 2));
+        game.roll(new Frame(2, 2));
+        game.roll(new Frame(2, 2));
+        //then
+        assertThat(game.score()).isEqualTo(expectedResult);
     }
 
 }

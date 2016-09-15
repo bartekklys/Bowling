@@ -6,28 +6,8 @@ public class Game {
     private List<Frame> frames = new ArrayList<Frame>();
     private int score = 0;
 
-    public static void main(String[] args) throws BowlingException {
-
-        Game game = new Game();
-
-        game.roll(new Frame(5, 5));
-        game.roll(new Frame(5, 5));
-        game.roll(new Frame(5, 5));
-        game.roll(new Frame(5, 5));
-        game.roll(new Frame(5, 5));
-        game.roll(new Frame(5, 5));
-        game.roll(new Frame(5, 5));
-        game.roll(new Frame(5, 5));
-        game.roll(new Frame(5, 5));
-        game.roll(new Frame(4, 4));
-
-        game.score();
-
-    }
-
     public void roll(Frame frame) {
         frames.add(frame);
-        System.out.println(frames.toString());
     }
 
     public int score() {
@@ -54,7 +34,6 @@ public class Game {
                 }
             }
         }
-        System.out.println(score);
         return score;
     }
 }
